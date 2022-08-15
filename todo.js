@@ -7,31 +7,46 @@ let todos = [
 let table = document.querySelector(".table");
 let tbody = document.querySelector("tbody");
 
-function addTask() {
+const addTask = (item) => {
+  let tr = document.createElement("tr");
+  let nameTask = document.createElement("td");
+  let desc = document.createElement("td");
+  let isDone = document.createElement("td");
+  let inputDone = document.createElement("input");
+  inputDone.type = "checkbox";
+
+  nameTask.textContent = item.nameTask;
+  desc.textContent = item.desc;
+  inputDone.checked = item.isDone;
+
+  isDone.appendChild(inputDone);
+  tr.appendChild(nameTask);
+  tr.appendChild(desc);
+  tr.appendChild(isDone);
+  tbody.appendChild(tr);
+};
+
+function addTasks() {
   todos.forEach((item) => {
-    let tr = document.createElement("tr");
-    let nameTask = document.createElement("td");
-    let desc = document.createElement("td");
-    let isDone = document.createElement("td");
-    let inputDone = document.createElement("input");
-    inputDone.type = "checkbox";
-
-    nameTask.textContent = item.nameTask;
-    desc.textContent = item.desc;
-    inputDone.checked = item.isDone;
-
-    isDone.appendChild(inputDone);
-    tr.appendChild(nameTask);
-    tr.appendChild(desc);
-    tr.appendChild(isDone);
-    tbody.appendChild(tr);
+    addTask(item);
   });
-
-  // nameTask.textContent = todos[0].nameTask;
-  // desc.textContent = todos[0].desc;
-  // inputDone.checked = todos[0].isDone;
 }
 
-addTask();
+addTasks();
 
-// tboby.appendChild(card);
+let button = document.querySelector("#button");
+button.addEventListener("click", () => {
+  let inputName = document.querySelector(".inputName");
+  let inputDesc = document.querySelector(".textarea");
+  let inputIsDone = document.querySelector(".inputIsDode");
+
+  todos.unshift({
+    nameTask: inputName.value,
+    desc: inputDesc.value,
+    isDone: inputIsDone.checked,
+  });
+  addTask(todos[0]);
+  inputName.value = "";
+  inputDesc.value = "";
+  inputIsDone.checked = false;
+});
