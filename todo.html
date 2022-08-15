@@ -14,8 +14,12 @@
     </header>
 
     <main class="main">
-      <section>
-        <input type="checkbox" />
+      <section class="todos">
+        <div class="div">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">Hide completed</label>
+        </div>
+
         <table>
           <thead>
             <tr>
@@ -49,11 +53,13 @@
           </tbody>
         </table>
       </section>
-      <aside>
-        <input type="text" />
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <input type="checkbox" />
-        <button>Create</button>
+      <aside class="aside">
+        <form action="" class="form">
+          <input type="text" />
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <input type="checkbox" />
+          <button>Create</button>
+        </form>
       </aside>
     </main>
     <footer class="footer">
